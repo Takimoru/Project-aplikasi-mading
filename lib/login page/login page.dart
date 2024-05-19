@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:revuemurale/homepage/homepage.dart';
+import 'package:revuemurale/login page/forgot password.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -50,85 +51,93 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top  : 50.0),
+            padding: const EdgeInsets.only(top: 50.0),
             child: Image.asset(
               'assets/images/orang.jpg', // Replace with the path to your image
-              height:150.0, // Set the desired height for the image
+              height: 150.0, // Set the desired height for the image
             ),
           ),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    TextFormField(
-                      controller: _usernameController,
-                      decoration: InputDecoration(
-                        labelText: 'Username',
-                        border: OutlineInputBorder(),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      TextFormField(
+                        controller: _usernameController,
+                        decoration: InputDecoration(
+                          labelText: 'Username',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Mohon mengisi Username';
+                          }
+                          if (int.tryParse(value) == null) {
+                            return 'Mohon mengisi username dengan NIM yang valid';
+                          }
+                          return null;
+                        },
                       ),
-                      keyboardType: TextInputType.number,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Mohon mengisi Username';
-                        }
-                        if (int.tryParse(value) == null) {
-                          return 'Mohon mengisi username dengan NIM yang valid';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 16.0),
-                    TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        border: OutlineInputBorder(),
+                      SizedBox(height: 16.0),
+                      TextFormField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          border: OutlineInputBorder(),
+                        ),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Mohon memasukkan password yang sesuai';
+                          }
+                          return null;
+                        },
                       ),
-                      obscureText: true,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Mohon memasukkan password yang sesuai';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 30.0),
-                    ElevatedButton(
-                      onPressed: _login,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue, // Set the background color to blue
+                      SizedBox(height: 30.0),
+                      ElevatedButton(
+                        onPressed: _login,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue, // Set the background color to blue
+                        ),
+                        child: Text('Login', style: TextStyle(color: Colors.white)),
                       ),
-                      child: Text('Login', style: TextStyle(color: Colors.white)),
-                    ),
-                    SizedBox(height: 16.0), // Add some spacing between the button and the redirect text
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to the signup or forgot password page
-                      },
-                      child: Text(
-                        'Forget Password',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
+                      SizedBox(height: 16.0), // Add some spacing between the button and the redirect text
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ForgotPassword()),
+                          );
+                        },
+                        child: Text(
+                          'Forget Password',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: Image.asset(
-              'assets/images/Mulia_logo.png', // Replace with the path to your image
-              height: 80.0, // Set the desired height for the image
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: Image.asset(
+                    'assets/images/Mulia_logo.png', // Replace with the path to your image
+                    height: 80.0, // Set the desired height for the image
             ),
           ),
+          )
         ],
       ),
     );
