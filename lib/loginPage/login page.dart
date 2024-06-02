@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:revuemurale/homepage/homepage.dart';
-import 'package:revuemurale/login%20page/forgot%20password.dart';
+import 'package:revuemurale/loginPage/forgot%20password.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {

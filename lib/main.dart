@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:revuemurale/homepage/homepage.dart';
-import 'package:revuemurale/login page/login page.dart';
+import 'package:revuemurale/loginPage/login page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
