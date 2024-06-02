@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:revuemurale/homepage/homepage.dart';
-import 'package:revuemurale/login page/forgot password.dart';
+import 'package:revuemurale/login%20page/forgot%20password.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,9 +20,11 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _login() {
+  void _login() async {
     if (_formKey.currentState!.validate()) {
-      // Perform login logic and navigate to HomePage
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
@@ -131,12 +134,12 @@ class _LoginPageState extends State<LoginPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-                  padding: const EdgeInsets.only(bottom: 16.0),
-                  child: Image.asset(
-                    'assets/images/Mulia_logo.png', // Replace with the path to your image
-                    height: 80.0, // Set the desired height for the image
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: Image.asset(
+                'assets/images/Mulia_logo.png', // Replace with the path to your image
+                height: 80.0, // Set the desired height for the image
+              ),
             ),
-          ),
           )
         ],
       ),

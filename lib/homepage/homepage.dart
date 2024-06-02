@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';  // Import this for SystemNavigator.pop
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:revuemurale/login page/login page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,15 +22,24 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void _logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', false);
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.only(top: 16.0),
-          child: Text(
-            'RevueMurale',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        title: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Text(
+              'RevueMurale',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
         ),
         leading: Builder(
@@ -83,10 +93,8 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
-              title: Text('Exit'),
-              onTap: () {
-                SystemNavigator.pop();
-              },
+              title: Text('Logout'),
+              onTap: _logout,
             ),
           ],
         ),
@@ -122,15 +130,29 @@ class HomePageContent extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsets.all(10.0),
-            height: 200.0,
-            color: Colors.grey,
-            child: Image.asset(
-              'assets/images/suichan.jpg',
-              fit: BoxFit.cover,
+            decoration: BoxDecoration(
+              color: Color(0xFFE0DDDD), // Background color set to hex E0DDDD
+              borderRadius: BorderRadius.circular(10.0),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.asset(
+                'assets/images/suichan.jpg',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
+
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Text(
               'Kabar Hari Ini',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -166,25 +188,45 @@ class HomePageContent extends StatelessWidget {
 
   Widget placeWidget({required String imageUrl, required String description}) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        children: [
-          Container(
-            height: 100,
-            color: Colors.grey,
-            child: Image.asset(
-              imageUrl,
-              fit: BoxFit.cover,
+      padding: const EdgeInsets.all(10.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFE0DDDD), // Background color set to hex E0DDDD
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3), // changes position of shadow
             ),
-          ),
-          SizedBox(height: 8.0),
-          Center(
-            child: Text(
-              description,
-              textAlign: TextAlign.center,
+          ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 130,
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
+              ),
             ),
-          ),
-        ],
+            SizedBox(height: 1.0),
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Center(
+                child: Text(
+                  description,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
