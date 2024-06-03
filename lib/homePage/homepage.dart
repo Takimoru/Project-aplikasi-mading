@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revuemurale/profile/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:revuemurale/loginPage/login page.dart';
 import 'package:revuemurale/contenPage/contentPage.dart';
@@ -8,6 +9,8 @@ import 'package:revuemurale/contenPage/contentPage3.dart';
 import 'package:revuemurale/contenPage/contentPage4.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -15,10 +18,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  final List<Widget> _children = [
+  final List<Widget> _children = const [
     HomePageContent(),
-    MessagesPage(),
-    ProfilePage(),
+    ProfilePages(),
   ];
 
   void onTabTapped(int index) {
@@ -32,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     await prefs.setBool('isLoggedIn', false);
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
+      MaterialPageRoute(builder: (context) => const LoginPage()),
     );
   }
 
@@ -40,9 +42,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 16.0),
+            padding: EdgeInsets.only(top: 16.0),
             child: Text(
               'RevueMurale',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -51,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         ),
         leading: Builder(
           builder: (context) => IconButton(
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
@@ -61,7 +63,7 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: [
+          children: const [
             DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
@@ -77,31 +79,17 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: Icon(Icons.home),
               title: Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-                onTabTapped(0);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.mail),
-              title: Text('Messages'),
-              onTap: () {
-                Navigator.pop(context);
-                onTabTapped(1);
-              },
+              onTap: null,
             ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Profile'),
-              onTap: () {
-                Navigator.pop(context);
-                onTabTapped(2);
-              },
+              onTap: null,
             ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
-              onTap: _logout,
+              onTap: null,
             ),
           ],
         ),
@@ -110,14 +98,10 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            label: 'Messages',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -130,80 +114,85 @@ class _HomePageState extends State<HomePage> {
 }
 
 class HomePageContent extends StatelessWidget {
+  const HomePageContent({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-          children: [
+        children: [
           GestureDetector(
-          onTap: () {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => ContentPage()), // Replace ContentPage with your desired page
-    );
-    },
-      child: Container(
-        margin: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          color: Color(0xFFFAF7F7), // Background color set to hex FAFAFA
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3), // changes position of shadow
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>
+                    ContentPage()), // Replace ContentPage with your desired page
+              );
+            },
+            child: Container(
+              margin: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFAF7F7),
+                // Background color set to hex FAFAFA
+                borderRadius: BorderRadius.circular(10.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Image.asset(
+                  'assets/images/suichan.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: Image.asset(
-            'assets/images/suichan.jpg',
-            fit: BoxFit.cover,
           ),
-        ),
-      ),
-    ),
-    Padding(
-    padding: const EdgeInsets.all(10.0),
-    child: Text(
-    'Kabar Hari Ini',
-    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    ),
-    ),
-    GridView.count(
-    shrinkWrap: true,
-    physics: NeverScrollableScrollPhysics(),
-    crossAxisCount: 2,
-    children: [
-    placeWidget(
-    context: context,
-    imageUrl: 'assets/images/suichaaan.jpg',
-    description: 'info olimpiade.',
-    contentPageId: 'info_1', // Unique ID for this content page
-    ),
-    placeWidget(
-    context: context,
-    imageUrl: 'assets/images/ayang.jpg',
-    description: 'info kkn.',
-    contentPageId: 'info_2', // Unique ID for this content page
-    ),
-    placeWidget(
-    context: context,
-    imageUrl: 'assets/images/hoshi.jpg',
-    description: 'info magang.',
-      contentPageId: 'info_3', // Unique ID for this content page
-    ),
-      placeWidget(
-        context: context,
-        imageUrl: 'assets/images/suiseihocimachi.jpg',
-        description: 'Info loker.',
-        contentPageId: 'info_4', // Unique ID for this content page
-      ),
-    ],
-    ),
-          ],
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text(
+              'Kabar Hari Ini',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            children: [
+              placeWidget(
+                context: context,
+                imageUrl: 'assets/images/suichaaan.jpg',
+                description: 'Diskusi menjaga demokrasi dengan aji balikpapan bahas peran pers mahasiswa.',
+                contentPageId: 'info_1', // Unique ID for this content page
+              ),
+              placeWidget(
+                context: context,
+                imageUrl: 'assets/images/ayang.jpg',
+                description: 'Dosen Universitas Mulia ungkap perilaku belanja online warga Balikpapan.',
+                contentPageId: 'info_2', // Unique ID for this content page
+              ),
+              placeWidget(
+                context: context,
+                imageUrl: 'assets/images/hoshi.jpg',
+                description: 'Kiat dan strategi menulis ala Prof. Ersis Warmansyah Abbas.',
+                contentPageId: 'info_3', // Unique ID for this content page
+              ),
+              placeWidget(
+
+                context: context,
+                imageUrl: 'assets/images/suiseihocimachi.jpg',
+                description: 'Bangun jiwa entrepreneur, mahasiswa FHK Universitas Mulia ramai bazar Ramadan.',
+                contentPageId: 'info_4', // Unique ID for this content page
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -250,24 +239,26 @@ class HomePageContent extends StatelessWidget {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xFFE0DDDD), // Background color set to hex E0DDDD
+            color: const Color(0xFFE0DDDD),
+            // Background color set to hex E0DDDD
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
+              SizedBox(
                 height: 130,
                 child: ClipRRect(
-                  borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(8.0)),
+                  borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(8.0)),
                   child: Image.asset(
                     imageUrl,
                     fit: BoxFit.cover,
@@ -275,13 +266,16 @@ class HomePageContent extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 1.0),
-              Padding(
-                padding: const EdgeInsets.all(1.0),
-                child: Center(
-                  child: Text(
-                    description,
-                    textAlign: TextAlign.center,
+              const SizedBox(height: 8.0),
+              Container(
+                height: 60.0, // Adjust the height as needed
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: Center(
+                    child: Text(
+                      description,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
@@ -292,23 +286,3 @@ class HomePageContent extends StatelessWidget {
     );
   }
 }
-
-class MessagesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text("Messages Page"),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text("Profile Page"),
-    );
-  }
-}
-
-

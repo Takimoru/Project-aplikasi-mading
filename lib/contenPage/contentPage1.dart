@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:revuemurale/homepage/homepage.dart';
+import 'package:revuemurale/profile/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:revuemurale/loginPage/login page.dart';
 
 class ContentPage1 extends StatefulWidget {
   @override
-  _ContentPageState createState() => _ContentPageState();
+  _ContentPage1State createState() => _ContentPage1State();
 }
 
-class _ContentPageState extends State<ContentPage1> {
+class _ContentPage1State extends State<ContentPage1> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    HomePageContent(),
-    MessagesPage(),
-    ProfilePage(),
+    ContentDetailPage(
+      imageAsset: 'assets/images/ayang.jpg', // replace with your actual asset path
+      title: 'Sample Title',
+      description: 'This is a long description of the content. It can be several paragraphs long and provide detailed information about the topic being discussed.',
+    ),
+    ProfilePages(),
   ];
 
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
+
+    if (index == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
   }
 
   void _logout() async {
@@ -73,24 +85,20 @@ class _ContentPageState extends State<ContentPage1> {
               leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
-                Navigator.pop(context);
-                onTabTapped(0);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.mail),
-              title: Text('Messages'),
-              onTap: () {
-                Navigator.pop(context);
-                onTabTapped(1);
+                setState(() {
+                  _currentIndex = 0;
+                });
+                Navigator.pop(context); // Close the drawer
               },
             ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Profile'),
               onTap: () {
-                Navigator.pop(context);
-                onTabTapped(2);
+                setState(() {
+                  _currentIndex = 1;
+                });
+                Navigator.pop(context); // Close the drawer
               },
             ),
             ListTile(
@@ -111,10 +119,6 @@ class _ContentPageState extends State<ContentPage1> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            label: 'Messages',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
@@ -124,29 +128,38 @@ class _ContentPageState extends State<ContentPage1> {
   }
 }
 
-class HomePageContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Home Content Page'),
-    );
-  }
-}
+class ContentDetailPage extends StatelessWidget {
+  final String imageAsset;
+  final String title;
+  final String description;
 
-class MessagesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text("Messages Page"),
-    );
-  }
-}
+  ContentDetailPage({required this.imageAsset, required this.title, required this.description});
 
-class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Profile Page"),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(imageAsset),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                title,
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                description,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
