@@ -15,9 +15,10 @@ class _ContentPage1State extends State<ContentPage1> {
 
   final List<Widget> _children = [
     ContentDetailPage(
-      imageAsset: 'assets/images/ayang.jpg', // replace with your actual asset path
-      title: 'Sample Title',
-      description: 'This is a long description of the content. It can be several paragraphs long and provide detailed information about the topic being discussed.',
+      imageAsset: 'assets/images/um 2.jpeg', // replace with your actual asset path
+      title: 'SOSIALISASI MSIB BATCH 7: KIAT SUKSES PROGRAM MERDEKA BELAJAR KAMPUS MERDEKA',
+      description: 'Dalam Rangka meningkatkan minat mahasiswa dalam program MBKM Kampus Meredeka telah dilaksanakan sosialisasi program Magang dan Studi Independen Bersertifikat (MSIB) Batch 7 secara online  31, Mei 2024. Acara ini dihadiri oleh sekitar 70 mahasiswa dari berbagai program studi, menunjukkan minat yang besar dalam program Merdeka Belajar Kampus Merdeka.\n\n'
+              'Kegiatan ini dihadiri oleh Wakil Rektor Bidang Akademik dan Sistem Informasi bapak Wisnu Hera Pamungkas, S.Tp., M.Eng. sebagai Pemateri pertama, , beliau memaparkan secara komprehensif tentang program Merdeka Belajar Kampus Merdeka. Beliau menjelaskan berbagai program yang dapat diikuti mahasiswa, termasuk magang, studi independen, dan pertukaran mahasiswa. Penjelasan ini diharapkan dapat membuka wawasan mahasiswa mengenai peluang yang tersedia untuk mengembangkan kompetensi dan pengalaman mereka di luar lingkungan kampus.'
     ),
     ProfilePages(), // Ensure this widget is properly defined
   ];

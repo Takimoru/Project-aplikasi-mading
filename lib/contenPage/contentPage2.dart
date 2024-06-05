@@ -15,9 +15,16 @@ class _ContentPage2State extends State<ContentPage2> {
 
   final List<Widget> _children = [
     ContentDetailPage(
-      imageAsset: 'assets/images/ayang.jpg', // replace with your actual asset path
-      title: 'Sample Title',
-      description: 'This is a long description of the content. It can be several paragraphs long and provide detailed information about the topic being discussed.',
+      imageAsset: 'assets/images/um1.jpg', // replace with your actual asset path
+      title: 'KATA DOSEN UNIVERSITAS MULIA, POLA PIKIR MENENTUKAN KEBERHASILAN WIRAUSAHA',
+      description: 'UM – Dosen Universitas Mulia melaksanakan Bimbingan Teknis Kewirausahaan Usaha Mikro Kecil Menengah (UMKM), Dinas Koperasi Usaha Kecil Menengah dan Perdagangan Kota Bontang, bertempat di Hotel Grand Tiga Mustika Balikpapan, Kamis (30/5). Dosen itu adalah Istia Budi, S.T., M.M dan Gabriela Sibarani, S.Kom., M.Ds.\n\n'
+        'Dalam pengantarnya, Istia Budi yang juga sebagai Trainer pada Layanan UMKM Naik Kelas (LUNAS) ini mengatakan bahwa dalam bimbingan teknis ini dirinya membahas materi tentang membangun kewirausahaan.\n\n'
+        '“Diantaranya adalah memahami kewirausahaan, melakukan perencanaan bisnis, latihan-latihan serta umpan balik dari seluruh peserta,” ujar Istia Budi.\n\n'
+        'Menurutnya, seorang wirausahawan sukses memiliki karakter kreatif, mampu menangkap peluang, berani mengambil resiko, dan dapat memanfaatkan potensi di sekitarnya.\n\n'
+        'Bukan hanya itu, ia menambahkan, menjadi wirausahawan juga harus menyukai tantangan, memiliki daya tahan yang tinggi, memiliki visi jauh ke depan serta mampu memberikan yang terbaik dan adaptif terhadap perkembangan teknologi dan zaman.\n\n'
+        '“Pola pikir kita menentukan keberhasilan nasib kita,” ujarnya. Pasalnya, menurutnya, bermula dari pikiran, maka perkataan seseorang itu muncul. Kemudian turun menjadi perbuatan, kebiasaan, karakter, lalu kemudian nasib.\n\n'
+        'Oleh karena itu, di dalam mengembangkan Entrepreneurship, Istia Budi mengajak seluruh peserta untuk mengawalinya dengan pikiran yang sehat, percaya diri, dan sikap optimis.\n\n'
+        'Seorang entrepreneur, menurutnya, harus bermimpi tentang meraih kesuksesan bisnis. Ini membantu mengarahkan fokus membangun bisnis yang kuat dan berkelanjutan.'
     ),
     ProfilePages(), // Ensure this widget is properly defined
   ];

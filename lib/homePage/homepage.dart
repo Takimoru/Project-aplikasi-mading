@@ -155,7 +155,7 @@ class HomePageContent extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset(
-                  'assets/images/suichan.jpg',
+                  'assets/images/um6.jpg',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -175,26 +175,26 @@ class HomePageContent extends StatelessWidget {
             children: [
               placeWidget(
                 context: context,
-                imageUrl: 'assets/images/suichaaan.jpg',
-                description: 'Diskusi menjaga demokrasi dengan aji balikpapan bahas peran pers mahasiswa.',
+                imageUrl: 'assets/images/um 2.jpeg',
+                description: 'SOSIALISASI MSIB BATCH 7: KIAT SUKSES PROGRAM MERDEKA BELAJAR KAMPUS MERDEKA',
                 contentPageId: 'info_1',
               ),
               placeWidget(
                 context: context,
-                imageUrl: 'assets/images/ayang.jpg',
-                description: 'Dosen Universitas Mulia ungkap perilaku belanja online warga Balikpapan.',
+                imageUrl: 'assets/images/um1.jpg',
+                description: 'KATA DOSEN UNIVERSITAS MULIA, POLA PIKIR MENENTUKAN KEBERHASILAN WIRAUSAHA',
                 contentPageId: 'info_2',
               ),
               placeWidget(
                 context: context,
-                imageUrl: 'assets/images/hoshi.jpg',
-                description: 'Kiat dan strategi menulis ala Prof. Ersis Warmansyah Abbas.',
+                imageUrl: 'assets/images/um3.jpg',
+                description: 'SELAMAT! TIM UNIVERSITAS MULIA JUARA STAND TERBAIK PAMERAN KEWIRAUSAHAAN PEMUDA BALIKPAPAN',
                 contentPageId: 'info_3',
               ),
               placeWidget(
                 context: context,
-                imageUrl: 'assets/images/suiseihocimachi.jpg',
-                description: 'Bangun jiwa entrepreneur, mahasiswa FHK Universitas Mulia ramai bazar Ramadan.',
+                imageUrl: 'assets/images/um4.jpg',
+                description: 'DISKUSI MENJAGA DEMOKRASI DENGAN AJI BALIKPAPAN BAHAS PERAN PERS MAHASISWA',
                 contentPageId: 'info_4',
               ),
             ],

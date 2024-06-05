@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:revuemurale/homepage/homepage.dart';
-import 'package:revuemurale/loginPage/login%20page.dart';
+import 'package:revuemurale/loginPage/login page.dart';
 import 'package:revuemurale/profile/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:revuemurale/loginPage/login page.dart'; // Ensure this import is correct
 
 class ContentPage extends StatefulWidget {
   @override
@@ -15,9 +14,11 @@ class _ContentPageState extends State<ContentPage> {
 
   final List<Widget> _children = [
     ContentDetailPage(
-      imageAsset: 'assets/images/ayang.jpg', // replace with your actual asset path
-      title: 'Sample Title',
-      description: 'This is a long description of the content. It can be several paragraphs long and provide detailed information about the topic being discussed.',
+      imageAsset: 'assets/images/um6.jpg', // replace with your actual asset path
+      title: 'KIAT DAN STRATEGI MENULIS ALA PROF. ERSIS WARMANSYAH ABBAS',
+      description: 'UM – Kuliah umum tentang Kiat dan Strategi Menulis sangat menarik dibawakan oleh Prof. Ersis Warmansyah Abbas, Guru Besar Universitas Lambung Mangkurat. Dengan strateginya ini pula, Prof. Ersis mampu menghasilkan 54 judul buku tentang menulis dalam lima tahun terakhir. Kiat dan strateginya ini kemudian dibagikan kepada para mahasiswa dan dosen Universitas Mulia, bertempat di Ballroom Cheng Ho, Rabu (29/5). Prof. Ersis mendorong para mahasiswa dan dosen bagaimana produktif menulis.\n\n'
+          'Direktur Eksekutif Yayasan Airlangga Dr. Agung Sakti Pribadi dalam sambutannya mengatakan sebelumnya mengira Prof. Ersis berambut panjang seperti yang ada pada foto. “Tapi ternyata itu masa lalu,” tuturnya.\n\n'
+          'Menurutnya, menjadi seorang penulis hidupnya menyenangkan. “Nanti mahasiswa bisa bertanya banyak setelah mendapatkan ilmunya, bisa juga dapat cerita dari beliau bagaimana sih cara menulis yang bagus,” terangnya.',
     ),
     ProfilePages(), // Ensure this widget is properly defined
   ];

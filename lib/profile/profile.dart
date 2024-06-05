@@ -14,17 +14,17 @@ class ProfilePages extends StatelessWidget {
         child: ListView(
           children: [
             ProfileRow(
-              profilePhoto: 'assets/profile_photo_1.jpg',
-              name: 'John Doe',
+              profilePhoto: 'assets/images/nico.jpg',
+              name: 'Nicolaos Tzakis',
               description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
+              'Saya adalah seorang mahasiswa S1 Informatika yang sedang menempuh pendidikan di Universitas Mulia',
             ),
             SizedBox(height: 20),
             ProfileRow(
-              profilePhoto: 'assets/profile_photo_2.jpg',
-              name: 'Jane Doe',
+              profilePhoto: 'assets/images/reyvaldi.jpg',
+              name: 'Reyvaldi Nur Rahmatullah',
               description:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
+              'Saya adalah seorang mahasiswa S1 Informatika yang sedang menempuh pendidikan di Universita Mulia',
             ),
           ],
         ),

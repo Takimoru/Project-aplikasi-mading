@@ -14,9 +14,11 @@ class _ContentPage3State extends State<ContentPage3> {
 
   final List<Widget> _children = [
     ContentDetailPage(
-      imageAsset: 'assets/images/ayang.jpg', // replace with your actual asset path
-      title: 'Sample Title',
-      description: 'This is a long description of the content. It can be several paragraphs long and provide detailed information about the topic being discussed.',
+      imageAsset: 'assets/images/um3.jpg', // replace with your actual asset path
+      title: 'SELAMAT! TIM UNIVERSITAS MULIA JUARA STAND TERBAIK PAMERAN KEWIRAUSAHAAN PEMUDA BALIKPAPAN',
+      description: 'UM – Stand Universitas Mulia pada Pameran Kewirausahaan Pemuda Pemula Kota Balikpapan yang digelar Dinas Pemuda Olahraga dan Pariwisata (Disporapar) akhirnya meraih Juara I. Piagam Penghargaan langsung diberikan oleh Kepala Disporapar Ratih Kusuma saat penutupan di Gedung Tenis, Minggu (25/2) malam.\n\n'
+            'Dalam pernyataannya, Ratih mendorong para pemuda untuk mandiri dengan memfasilitasi para wirausahawan pemula ruang untuk mengekspresikan produk dan usaha mereka. Dengan kegiatan tersebut, ia berharap capaian Indeks Pembangunan Pemuda (IPP) di Kota Balikpapan juga meningkat.\n\n'
+            '  IPP adalah sebuah instrumen untuk memberikan gambaran kemajuan pembangunan pemuda di Indonesia. IPP Indonesia dapat menjadi rujukan bagi kebijakan dan strategi pembangunan pemuda di Indonesia.\n\n'
     ),
     ProfilePages(), // Ensure this widget is properly defined
   ];

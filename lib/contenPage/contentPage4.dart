@@ -15,9 +15,13 @@ class _ContentPage4State extends State<ContentPage4> {
 
   final List<Widget> _children = [
     ContentDetailPage(
-      imageAsset: 'assets/images/ayang.jpg', // replace with your actual asset path
-      title: 'Sample Title',
-      description: 'This is a long description of the content. It can be several paragraphs long and provide detailed information about the topic being discussed.',
+      imageAsset: 'assets/images/um4.jpg', // replace with your actual asset path
+      title: 'DISKUSI MENJAGA DEMOKRASI DENGAN AJI BALIKPAPAN BAHAS PERAN PERS MAHASISWA',
+      description: 'UM – Universitas Mulia menjadi tuan rumah Aliansi Jurnalis Independen (AJI) Kota Balikpapan yang menggelar diskusi tentang Menjaga Demokrasi dengan Penyebaran Informasi Bermutu. Diskusi berlangsung di Ballroom Cheng Ho, Jalan Letjen Zaini Azhar Maulani, Selasa (28/5).\n\n'
+            'Direktur Eksekutif Yayasan Airlangga Dr. Agung Sakti Pribadi, dalam sambutannya membuka acara mengatakan bahwa kegiatan ini membuka wawasan kepada mahasiswa dan masyarakat umum serta mendorong publik untuk menyebarkan informasi dan konten di media sosial secara bijak.\n\n'
+            'Dr. Agung menyambut positif gagasan kegiatan diskusi dengan para mahasiswa. Ia berharap berawal dari diskusi tersebut Unit Kegiatan Mahasiswa seperti Lembaga Pers Mahasiswa (LPM) mulai aktif kembali.\n\n'
+            'Dr. Agung berharap para jurnalis dapat menjadi mentor atau pendidik bagi para mahasiswa. Diharapkan mahasiswa dapat belajar langsung menghasilkan produk jurnalistik yang berkualitas.\n\n'
+            'Diskusi diikuti ratusan mahasiswa dari perguruan tinggi di Kota Balikpapan, di antaranya Universitas Mulia, Universitas Balikpapan, dan Politeknik Negeri Balikpapan. Sebagai narasumber jurnalis Antara Novi Abdi, pegiat media sosial Hanna Pertiwi, dan Direktur LBH Samarinda Fathul Huda.',
     ),
     ProfilePages(), // Ensure this widget is properly defined
   ];
