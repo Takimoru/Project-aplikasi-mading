@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:revuemurale/homepage/homepage.dart';
+import 'package:revuemurale/loginPage/login%20page.dart';
 import 'package:revuemurale/profile/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:revuemurale/loginPage/login page.dart';
+import 'package:revuemurale/loginPage/login page.dart'; // Ensure this import is correct
 
 class ContentPage2 extends StatefulWidget {
   @override
@@ -18,20 +19,13 @@ class _ContentPage2State extends State<ContentPage2> {
       title: 'Sample Title',
       description: 'This is a long description of the content. It can be several paragraphs long and provide detailed information about the topic being discussed.',
     ),
-    ProfilePages(),
+    ProfilePages(), // Ensure this widget is properly defined
   ];
 
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
-
-    if (index == 0) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
-    }
   }
 
   void _logout() async {
@@ -39,7 +33,14 @@ class _ContentPage2State extends State<ContentPage2> {
     await prefs.setBool('isLoggedIn', false);
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => LoginPage()),
+      MaterialPageRoute(builder: (context) => LoginPage()), // Ensure this widget is properly defined
+    );
+  }
+
+  void _navigateToHomePage() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
     );
   }
 
@@ -85,10 +86,8 @@ class _ContentPage2State extends State<ContentPage2> {
               leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
-                setState(() {
-                  _currentIndex = 0;
-                });
                 Navigator.pop(context); // Close the drawer
+                _navigateToHomePage();
               },
             ),
             ListTile(

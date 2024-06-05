@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _children = const [
     HomePageContent(),
     ProfilePages(),
+    HomePage(),
   ];
 
   void onTabTapped(int index) {
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _logout() async {
+  void _logout(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isLoggedIn', false);
     Navigator.pushReplacement(
@@ -63,8 +64,8 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const [
-            DrawerHeader(
+          children: [
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
@@ -77,19 +78,28 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: null,
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                onTabTapped(0); // Switch to Home tab
+              },
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
-              onTap: null,
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                onTabTapped(1); // Switch to Profile tab
+              },
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
-              onTap: null,
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Logout'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                _logout(context); // Logout the user
+              },
             ),
           ],
         ),
@@ -125,22 +135,20 @@ class HomePageContent extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>
-                    ContentPage()), // Replace ContentPage with your desired page
+                MaterialPageRoute(builder: (context) => ContentPage()), // Replace ContentPage with your desired page
               );
             },
             child: Container(
               margin: const EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                 color: const Color(0xFFFAF7F7),
-                // Background color set to hex FAFAFA
                 borderRadius: BorderRadius.circular(10.0),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: const Offset(0, 3), // changes position of shadow
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
@@ -169,26 +177,25 @@ class HomePageContent extends StatelessWidget {
                 context: context,
                 imageUrl: 'assets/images/suichaaan.jpg',
                 description: 'Diskusi menjaga demokrasi dengan aji balikpapan bahas peran pers mahasiswa.',
-                contentPageId: 'info_1', // Unique ID for this content page
+                contentPageId: 'info_1',
               ),
               placeWidget(
                 context: context,
                 imageUrl: 'assets/images/ayang.jpg',
                 description: 'Dosen Universitas Mulia ungkap perilaku belanja online warga Balikpapan.',
-                contentPageId: 'info_2', // Unique ID for this content page
+                contentPageId: 'info_2',
               ),
               placeWidget(
                 context: context,
                 imageUrl: 'assets/images/hoshi.jpg',
                 description: 'Kiat dan strategi menulis ala Prof. Ersis Warmansyah Abbas.',
-                contentPageId: 'info_3', // Unique ID for this content page
+                contentPageId: 'info_3',
               ),
               placeWidget(
-
                 context: context,
                 imageUrl: 'assets/images/suiseihocimachi.jpg',
                 description: 'Bangun jiwa entrepreneur, mahasiswa FHK Universitas Mulia ramai bazar Ramadan.',
-                contentPageId: 'info_4', // Unique ID for this content page
+                contentPageId: 'info_4',
               ),
             ],
           ),
@@ -240,14 +247,13 @@ class HomePageContent extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: const Color(0xFFE0DDDD),
-            // Background color set to hex E0DDDD
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: const Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -257,8 +263,7 @@ class HomePageContent extends StatelessWidget {
               SizedBox(
                 height: 130,
                 child: ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(8.0)),
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
                   child: Image.asset(
                     imageUrl,
                     fit: BoxFit.cover,
@@ -267,14 +272,18 @@ class HomePageContent extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8.0),
-              Container(
-                height: 60.0, // Adjust the height as needed
-                padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
-                  child: Center(
-                    child: Text(
-                      description,
-                      textAlign: TextAlign.center,
+              Expanded( // Make the description text expandable
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SingleChildScrollView( // Add scrolling capability to the text
+                    child: Center(
+                      child: Text(
+                        description,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
                     ),
                   ),
                 ),
